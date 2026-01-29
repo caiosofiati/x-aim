@@ -31,7 +31,9 @@ Desktop.ini
 *.tmp
 
 # Documentation and Text Files
-
+*.md
+*.txt
+!README.md
 
 # User Settings (Local only)
 settings.json
