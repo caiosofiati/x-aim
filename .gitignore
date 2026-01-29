@@ -35,6 +35,7 @@ Desktop.ini
 *.txt
 !README.md
 
+
 # User Settings (Local only)
 settings.json
 presets.json
