@@ -1,0 +1,38 @@
+# Visual Studio & .NET
+.vs/
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.cache
+*.pdb
+
+# VS Code
+.vscode/
+# Keep settings.json if you want to share project settings, otherwise ignore the whole folder
+# .vscode/settings.json
+# .vscode/tasks.json
+# .vscode/launch.json
+# .vscode/extensions.json
+*.code-workspace
+
+# Publish directory
+publish/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.log
+*.tmp
+
+# Documentation and Text Files
+
+
+# User Settings (Local only)
+settings.json
+presets.json

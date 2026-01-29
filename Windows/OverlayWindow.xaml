@@ -1,0 +1,80 @@
+<Window x:Class="CrosshairOverlay.Windows.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:CrosshairOverlay.Converters"
+        Title="X-Aim Overlay"
+        Width="200" Height="200"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        WindowStartupLocation="Manual"
+        ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
+    
+    <!-- 
+    Canvas for rendering the crosshair.
+    The canvas is 200x200 pixels, centered on the screen.
+    All crosshair elements are positioned relative to the center (100, 100).
+    -->
+    <Canvas Width="200" Height="200" 
+            Opacity="{Binding Opacity}"
+            Visibility="{Binding CrosshairEnabled, Converter={StaticResource BoolToVisibilityConverter}}">
+        
+        <!-- Top Line: vertical line going up from center -->
+        <Line X1="100" Y1="{Binding TopLineY1}"
+              X2="100" Y2="{Binding TopLineY2}"
+              Stroke="{Binding CrosshairBrush}"
+              StrokeThickness="{Binding Thickness}"
+              StrokeStartLineCap="Round"
+              StrokeEndLineCap="Round"
+              Visibility="{Binding ShowTopLine, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        
+        <!-- Bottom Line: vertical line going down from center -->
+        <Line X1="100" Y1="{Binding BottomLineY1}"
+              X2="100" Y2="{Binding BottomLineY2}"
+              Stroke="{Binding CrosshairBrush}"
+              StrokeThickness="{Binding Thickness}"
+              StrokeStartLineCap="Round"
+              StrokeEndLineCap="Round"
+              Visibility="{Binding ShowVerticalLines, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        
+        <!-- Left Line: horizontal line going left from center -->
+        <Line X1="{Binding LeftLineX1}" Y1="100"
+              X2="{Binding LeftLineX2}" Y2="100"
+              Stroke="{Binding CrosshairBrush}"
+              StrokeThickness="{Binding Thickness}"
+              StrokeStartLineCap="Round"
+              StrokeEndLineCap="Round"
+              Visibility="{Binding ShowHorizontalLines, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        
+        <!-- Right Line: horizontal line going right from center -->
+        <Line X1="{Binding RightLineX1}" Y1="100"
+              X2="{Binding RightLineX2}" Y2="100"
+              Stroke="{Binding CrosshairBrush}"
+              StrokeThickness="{Binding Thickness}"
+              StrokeStartLineCap="Round"
+              StrokeEndLineCap="Round"
+              Visibility="{Binding ShowHorizontalLines, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        
+        <!-- Center Dot: optional filled ellipse at the center -->
+        <Ellipse Width="{Binding DotSize}" Height="{Binding DotSize}"
+                 Fill="{Binding CrosshairBrush}"
+                 Canvas.Left="{Binding DotLeft}"
+                 Canvas.Top="{Binding DotTop}"
+                 Visibility="{Binding ShowDot, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        
+        <!-- Circle: optional circle outline around the crosshair -->
+        <Ellipse Width="{Binding CircleDiameter}" Height="{Binding CircleDiameter}"
+                 Stroke="{Binding CrosshairBrush}"
+                 StrokeThickness="{Binding Thickness}"
+                 Fill="Transparent"
+                 Canvas.Left="{Binding CircleLeft}"
+                 Canvas.Top="{Binding CircleTop}"
+                 Visibility="{Binding ShowCircle, Converter={StaticResource BoolToVisibilityConverter}}"/>
+    </Canvas>
+</Window>

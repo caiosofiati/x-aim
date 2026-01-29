@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <AssemblyName>X-Aim</AssemblyName>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon></ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    
+    <!-- Single file publish settings -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    
+    <!-- Disable compression - fixes color rendering issues with transparent windows -->
+    <EnableCompressionInSingleFile>false</EnableCompressionInSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\**\*" />
+  </ItemGroup>
+
+</Project>
